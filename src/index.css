@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #060913;
+  color: #e2e8f0;
+  font-family: 'Rajdhani', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Pixelated corner brackets for cells */
+.rpg-cell {
+  position: relative;
+  background: linear-gradient(135deg, rgba(13, 21, 39, 0.95), rgba(9, 14, 28, 0.98));
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.03);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease-in-out;
+}
+
+.rpg-cell:hover {
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 240, 255, 0.15), inset 0 0 20px rgba(0, 240, 255, 0.06);
+}
+
+.rpg-cell::before, .rpg-cell::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #00f0ff;
+  pointer-events: none;
+}
+.rpg-cell::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid #00f0ff;
+  border-left: 2px solid #00f0ff;
+}
+.rpg-cell::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid #00f0ff;
+  border-right: 2px solid #00f0ff;
+}
+
+.rpg-cell-gold {
+  border-color: rgba(250, 204, 21, 0.3);
+}
+.rpg-cell-gold:hover {
+  border-color: rgba(250, 204, 21, 0.6);
+  box-shadow: 0 8px 30px rgba(250, 204, 21, 0.15);
+}
+.rpg-cell-gold::before { border-color: #facc15; }
+.rpg-cell-gold::after { border-color: #facc15; }
+
+/* Scanline effect */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  z-index: 999;
+  opacity: 0.7;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border: 1px solid #00f0ff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
+}
